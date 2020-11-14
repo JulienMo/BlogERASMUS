@@ -1,0 +1,23 @@
+homepage:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+article_add:
+    path: /add
+    controller: App\Controller\DefaultController::add
+
+article_show:
+    path: /show/{url}
+    controller: App\Controller\DefaultController::show
+
+article_edit:
+    path: /edit/{id}
+    controller: App\Controller\DefaultController::edit
+    requirements:   
+      id: '\d+'
+    
+article_remove:
+    path: /remove/{id}
+    controller: App\Controller\DefaultController::remove
+    requirements:   
+      id: '\d+'
