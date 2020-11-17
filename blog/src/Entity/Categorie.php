@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\Article;
+use App\Entity\Article;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -26,7 +26,7 @@ class Categorie
     private $label;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Repository\Article", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", mappedBy="categories")
      */
     private $articles;
 
