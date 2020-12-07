@@ -11,8 +11,10 @@ add:
   controller: App\Controller\BlogController::add
 
 article_show: 
-  path: /show/{url}
+  path: /show/{id}
   controller: App\Controller\BlogController::show
+  requirements: 
+    id: '\d+'
 
 article_edit:
   path: /edit/{id}
@@ -25,3 +27,7 @@ article_remove:
   controller: App\Controller\BlogController::remove
   requirements: 
     id: '\d+'
+
+admin:
+  path: /admin
+  controller: App\Controller\BlogController::admin

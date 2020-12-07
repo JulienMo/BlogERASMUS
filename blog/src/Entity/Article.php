@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,6 +26,7 @@ class Article
     private $picture;
 
     /**
+     * @Assert\NotBlank(message="Le titre de l'article ne peut être vide.")
      * @ORM\Column(type="string", length=255)
      */
     private $title;
