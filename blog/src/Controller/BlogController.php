@@ -27,6 +27,8 @@ class BlogController extends AbstractController
 
     public function add(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
 
@@ -72,7 +74,7 @@ class BlogController extends AbstractController
             'article' => $article
         ]);
     }
-
+    
     public function edit(Article $article, Request $request)
     {
         $oldPicture = $article->getPicture();
@@ -109,7 +111,8 @@ class BlogController extends AbstractController
             $em->persist($article);
             $em->flush();
 
-            return new Response('L\'article a bien été modifier.');
+            return $this->redirectToRoute('admin');
+    
         }
 
     	return $this->render('blog/edit.html.twig', [
@@ -120,20 +123,22 @@ class BlogController extends AbstractController
     
     public function remove($id)
     {
-    	return new Response('<h1>Supprimer l\'article ' .$id. '</h1>');
+        $articleRepository = $this->om->getRepository(User::class);;
+    	$articleDel = $articleRepository->findOneBy(array('id' => $id));
+        return $this->redirectToRoute('admin');
     }
 
     public function admin()
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findBy(
-            [], 
+            [],
             ['lastUpdateDate' => 'DESC']
         );
 
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
         return $this->render('admin/index.html.twig', [
-            'articles' => $articles, 
+            'articles' => $articles,
             'users' => $users
         ]);
     }
