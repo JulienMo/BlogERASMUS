@@ -1,7 +1,7 @@
 /* navbar */
 
 nav {
-    background-color: #d4b672;
+    background-color: #DF2641;
     margin-bottom: 30px;
 }
 
@@ -56,4 +56,16 @@ nav {
 .input-field span.error {
     color: #e04447;
     font-size: 12px;
+}
+
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #DF2641;
+}
+
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+    background-color: #DF2641;
 }
