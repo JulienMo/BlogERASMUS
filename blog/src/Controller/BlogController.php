@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
+    private $om;
+
     /**
      * @Route("/blog", name="blog")
      */
@@ -60,7 +63,8 @@ class BlogController extends AbstractController
             $em->persist($article);                     // On confie notre entité à l'entity manager (on persist l'entité)
             $em->flush();                               // On execute la requete
 
-            return new Response('L\'article à été enregistrer ...');
+            return $this->redirectToRoute('admin');
+
         }
 
         return $this->render('blog/add.html.twig', [
@@ -121,10 +125,17 @@ class BlogController extends AbstractController
         ]);
     }
     
-    public function remove($id)
+    public function remove($id, EntityManagerInterface $om)
     {
-        $articleRepository = $this->om->getRepository(User::class);;
-    	$articleDel = $articleRepository->findOneBy(array('id' => $id));
+        $this->om = $om;
+
+        $articleRepository = $this->om->getRepository(Article::class);
+        $articleDel = $articleRepository->findOneBy(array('id' => $id));
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($articleDel);
+        $em->flush();
+
         return $this->redirectToRoute('admin');
     }
 
