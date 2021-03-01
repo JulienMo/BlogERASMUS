@@ -6,6 +6,13 @@ nav {
 }
 
 
+/*affichage article*/
+
+.texte {
+    text-align: justify;
+}
+
+
 /* article card */
 
 .article-card {
@@ -20,7 +27,14 @@ nav {
 }
 
 .article-card h2 a {
-    color: #d4b672;
+    color: #DF2641;
+}
+
+.article-card h3 {
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .article-card.image-card {

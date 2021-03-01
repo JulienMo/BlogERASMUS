@@ -153,4 +153,20 @@ class BlogController extends AbstractController
             'users' => $users
         ]);
     }
+
+    /**
+     * @Route("/aboutus", name="aboutus")
+     */
+    public function aboutus () 
+    {
+        return $this->render('autres/aboutus.html.twig');
+    }
+
+    /**
+     * @Route("/rechercher", name="rechercher")
+     */
+    public function rechercher () 
+    {
+        return $this->render('autres/aboutus.html.twig');
+    }
 }
