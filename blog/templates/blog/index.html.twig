@@ -6,13 +6,16 @@
 	<div class="container">
 		<div class="row">
 			{% for article in articles %}
-				<div class="col s12 m4 l3">
-					<div class="article-card">
-						<img src="{{ asset('uploads/' ~ article.picture) }}" class="responsive-img">
-						<h2><a href="{{ path('article_show', {'id': article.id}) }}">{{ article.title }}</a></h2>
-						<span class="date">{{ article.publicationDate|date('d/m/Y') }}</span>
+				<a href="{{ path('article_show', {'id': article.id}) }}">
+					<div class="col s12 m4 l3">
+						<div class="article-card">
+							<img src="{{ asset('uploads/' ~ article.picture) }}" class="responsive-img">
+							<h2><a href="{{ path('article_show', {'id': article.id}) }}">{{ article.title }}</a></h2>
+							<h3>{% for category in article.categories %} {{ category.label }}{{ loop.last ? '' : ',' }} {% endfor %}</h3>
+							<span class="date">{{ article.publicationDate|date('d/m/Y') }}</span>
+						</div>
 					</div>
-				</div>
+				</a>
 			{% endfor %}
 		</div>
 	</div>

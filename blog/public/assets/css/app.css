@@ -1,8 +1,15 @@
 /* navbar */
 
 nav {
-    background-color: #d4b672;
+    background-color: #DF2641;
     margin-bottom: 30px;
+}
+
+
+/*affichage article*/
+
+.texte {
+    text-align: justify;
 }
 
 
@@ -20,7 +27,14 @@ nav {
 }
 
 .article-card h2 a {
-    color: #d4b672;
+    color: #DF2641;
+}
+
+.article-card h3 {
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .article-card.image-card {
@@ -56,4 +70,16 @@ nav {
 .input-field span.error {
     color: #e04447;
     font-size: 12px;
+}
+
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #DF2641;
+}
+
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+    background-color: #DF2641;
 }
